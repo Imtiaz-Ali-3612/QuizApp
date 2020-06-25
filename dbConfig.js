@@ -2,10 +2,10 @@ var mysql=require('mysql2')
 
 
 var pool = mysql.createPool({
-    host:"localhost",
-    user:"root",
-    database:"quizapp",
-    password:"fast3612"
+    host:"sql12.freemysqlhosting.net",
+    user:"sql12350681",
+    database:"sql12350681",
+    password:"Kq9Aw5MKZs"
 });
 
 module.exports=pool.promise();
