@@ -16,7 +16,8 @@ app.get('/',(req,res)=>{
 
 app.use('/quiz',quizRoutes);
 
-app.listen(3000,()=>{
+var server = process.env.PORT || 3000 ;
+app.listen(server,()=>{
     console.log("Server is running on 3000");
 })
 
