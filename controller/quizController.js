@@ -16,7 +16,7 @@ exports.getQuiz=(req,res,next)=>{
     ).catch(err=>{
         
         console.log(err);
-        res.json({error:true,message:"Connection Error Occured"})
+        res.json({error:true,message:"Connection Error Occured",err:err.message})
         next(err);
     })
 }
@@ -35,7 +35,7 @@ exports.addQuiz=(req,res,next)=>{
         next();
     }).catch(err=>{
         console.log(err);
-        res.json({message:'Connection Error'})
+        res.json({message:'Connection Error',err:err.message})
         next(err)
     })
 }
@@ -50,7 +50,7 @@ exports.getSubjects=(req,res,next)=>{
         }
     ).catch(err=>{
         console.log(err);
-        res.json({message:'Connection Error'})
+        res.json({message:'Connection Error',err:err.message})
         next(err);
     })   
 }
@@ -66,6 +66,8 @@ exports.addSubject=(req,res,next)=>{
         next();
     }).catch(err=>{
         console.log(err)
+        res.json({message:'Connection Error',err:err.message})
+ 
         next(err)
     })
 }
