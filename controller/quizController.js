@@ -6,7 +6,7 @@ var db=require('../dbConfig')
 exports.getQuiz=(req,res,next)=>{
     console.log('-----------')
     var subject= req.params.subject;
-    db.execute('Select * from quiz, subject where subject_id=?',[subject])
+    db.execute('Select * from `quiz`, `subject` where `subject_id`=?',[subject])
     .then(
         ep=>{
             console.log(ep[0])
@@ -25,7 +25,7 @@ exports.addQuiz=(req,res,next)=>{
     console.log(req.body)
     var {question,Subject_subject_id,opt1,opt2,opt3,opt4,answer}= req.body;
 
-    db.execute('insert into quiz (question,Subject_subject_id,opt1,opt2,opt3,opt4,answer) values (?,?,?,?,?,?,?)',
+    db.execute('insert into `quiz` (`question`,`Subject_subject_id`,`opt1`,`opt2`,`opt3`,`opt4`,`answer`) values (?,?,?,?,?,?,?)',
     [
         question,Subject_subject_id,opt1,opt2,opt3,opt4,answer
     ]   
@@ -41,7 +41,7 @@ exports.addQuiz=(req,res,next)=>{
 }
 
 exports.getSubjects=(req,res,next)=>{
-    db.execute('Select * from subject')
+    db.execute('Select * from `subject`')
     .then(
         ep=>{
             console.log(ep[0])
@@ -59,7 +59,7 @@ exports.addSubject=(req,res,next)=>{
     console.log(req.body)
     var subject_name=req.body.subject_name;
     console.log(subject_name)
-    db.execute('insert into subject (subject_name) values (?)',[subject_name])
+    db.execute('insert into `subject` (`subject_name`) values (?)',[subject_name])
     .then(sub=>{
         console.log("Subject is added ",sub)
         res.json({message:'Subject Added',subject:sub})
